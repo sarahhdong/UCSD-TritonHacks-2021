@@ -14,6 +14,7 @@ def avg_price(prices):
   for i in range(len(prices)):
     sum += len(prices[i])
   average = sum / len(prices) # <- TODO Replace this line
+  average = round(average,2)
   return average
 
 """
@@ -31,6 +32,7 @@ def avg_rating(ratings):
     sum+=ratings[i]
     
   average = sum / len(ratings) # <- TODO Replace this line
+  average = round(average,2)
   return average
 
 
