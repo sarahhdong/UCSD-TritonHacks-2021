@@ -52,16 +52,16 @@ def compare():
             # Determine the cheaper and higher rated places
             #cheaper = loc2 if place1_avg_price > place2_avg_price else loc1
             #higher_rating = loc2 if place2_avg_rating > place1_avg_rating else loc1
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
-            com
+#            com
 
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, cheaper=cheaper, higher=higher_rating))
             #return 'Cheaper place is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
             #return 'star1 is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
 
-=======
+#=======
 
             if place1_avg_price > place2_avg_price:
                 pricecmp = 'The cheaper place is: ' + loc2
@@ -79,7 +79,7 @@ def compare():
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
->>>>>>> 5c1f7add5d826f52cb0f959360cf7b3c798100b5
+#>>>>>>> 5c1f7add5d826f52cb0f959360cf7b3c798100b5
     return render_template('compare.html')
 
 @app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
@@ -96,15 +96,17 @@ def hotel():
             flash('Required field needed')
         else:
             try:
-                (hotels1, prices1, imgs1) = getHotel(city1)
-                (hotel2, prices2, imgs2) = getHotel(city2)
+                (hotels1, prices1) = getHotel(city1)
+                (hotels2, prices2) = getHotel(city2)
 
                 city1_avg = avg_price(prices1)
                 city2_avg = avg_prices(prices2)
 
-                cheaper = place2 if hotel1_avg_price > hotel2_avg_price else place1
+                cheaper = city2 if city1_avg > city2_avg else city1
                 return (cheaper + " is cheaper on average")
             except Exception as e:
                 flash('Bad input, please re-enter')
+                return render_template('hotel.html')
 
-
+            return render_template('hotel.html')
+    return render_template('hotel.html')
