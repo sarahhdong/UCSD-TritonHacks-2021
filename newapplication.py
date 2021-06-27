@@ -88,14 +88,31 @@ def hotel():
                 (hotels1, prices1) = getHotel(city1)
                 (hotels2, prices2) = getHotel(city2)
 
-                city1_avg = avg_price(prices1)
-                city2_avg = avg_prices(prices2)
+                place1_avg_price = avg_price(prices1)
+                place2_avg_price = avg_price(prices2)
+
+                firstHot1 = hotels1[0]
+                firstHot2 = hotels2[0]
+
+                firstHot1_price = prices1[0]
+                firstHot2_price = prices2[0]
 
                 cheaper = city2 if city1_avg > city2_avg else city1
-                return (cheaper + " is cheaper on average")
+                pricecmp = (cheaper + " has cheaper hotels on average")
+
+                return redirect('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
+
+
+
             except Exception as e:
                 flash('Bad input, please re-enter')
                 return render_template('hotel.html')
 
             return render_template('hotel.html')
     return render_template('hotel.html')
+
+@app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp1>')
+def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp1):
+    return render_template('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
+
+

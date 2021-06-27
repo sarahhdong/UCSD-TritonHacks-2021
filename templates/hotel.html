@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>{% block title %} Hotel Results {% endblock %}</h1>
+<h1>{% block title %} Compare Hotels in Two Cities! {% endblock %}</h1>
 
 <form method="post">
     <div class="form-group">
@@ -23,19 +23,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
-
-<div class="slide">
-    <!--location-->
-    <h2>{location}</h2>
-    <!--average rating-->
-    <div><strong>Average rating:</strong>{rating}</div>
-    <!--average price-->
-    <div><strong>Average price:</strong>{price}</div>
-    <!--Image-->
-    <div class="imageCollage">
-      {images}
-    </div>
-  </div>
-
 
 {% endblock %}
