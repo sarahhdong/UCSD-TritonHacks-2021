@@ -21,8 +21,8 @@ def index():
 def introduction():
     return render_template('introduction.html')
 
-@app.route('/compare', methods=('GET', 'POST'))
-def compare():
+@app.route('/foodcompare', methods=('GET', 'POST'))
+def foodcompare():
     if request.method == 'POST':
         type = request.form['type']
         loc1 = request.form['loc1']
@@ -74,6 +74,10 @@ def compare():
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b2eedee103746b01d966a342781e740b05d965fd
     return render_template('foodcompare.html')
 
 @app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
