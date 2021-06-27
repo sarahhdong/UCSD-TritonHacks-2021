@@ -30,14 +30,15 @@ def scrape_for(query, location):
   hint: refer to results in (line 26)
   """
   # Get all prices
-  prices = scraper.find_all("span", "priceRange__09f24__2O6le css-xtpg8e") # <- TODO Add the span class here
+  prices = scraper.find_all("span", class_="priceRange__09f24__2O6le css-xtpg8e") # <- TODO Add the span class here
 
   """
   PART 4
   """
   # Get all star ratings
-  stars = scraper.find_all("div",class_="i-stars__09f24__1T6rz i-stars--regular-4-half__09f24__1YrPo border-color--default__09f24__1eOdn overflow--hidden__09f24__3z7CX")
-
+  stars = scraper.find_all("div",class_="i-stars__09f24__1T6rz")
+  print (stars)
+  print (prices)
 
   # Get all images, store only source attributes
   images = scraper.find_all(class_="css-xlzvdl")[:10]
