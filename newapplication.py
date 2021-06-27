@@ -6,7 +6,7 @@ import webbrowser
 import sys        # Used to end program if error occurs
 
 from convert import avg_price, avg_rating
-from scraper import scrape_for
+from scraper import scrape_for, getHotel
 from scraper import getweather
 from generator import generate, homePage
 
@@ -85,8 +85,8 @@ def hotel():
             flash('Required field needed')
         else:
             try:
-                (hotels1, prices1) = getHotel(city1)
-                (hotels2, prices2) = getHotel(city2)
+                hotels1, prices1 = getHotel(city1)
+                hotels2, prices2 = getHotel(city2)
 
                 place1_avg_price = avg_price(prices1)
                 place2_avg_price = avg_price(prices2)
@@ -97,22 +97,23 @@ def hotel():
                 firstHot1_price = prices1[0]
                 firstHot2_price = prices2[0]
 
-                cheaper = city2 if city1_avg > city2_avg else city1
-                pricecmp = (cheaper + " has cheaper hotels on average")
-
-                return redirect('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
-
-
-
             except Exception as e:
                 flash('Bad input, please re-enter')
                 return render_template('hotel.html')
 
-            return render_template('hotel.html')
+            cheaper = city2 if place1_avg_price > place2_avg_price else city1
+            pricecmp = (cheaper + " has cheaper hotels on average")
+
+            return redirect(url_for('hotelresult', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp))
+
+
+
+
+            #return render_template('hotel.html')
     return render_template('hotel.html')
 
-@app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp1>')
-def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp1):
+@app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp>')
+def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp):
     return render_template('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
 
 
