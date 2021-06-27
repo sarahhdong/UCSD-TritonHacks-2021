@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{% block title %} Hotel Comparison Resutls {% endblock %}</h1>
+
+<hr>
+<br>
+<h3>  {{ pricecmp }} </h3>
+
+<hr>
+
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Hotels</th>
+    <th>Prices</th>
+  </tr>
+  <tr>
+    <td>{{city1}}</td>
+    <td>{{firstHot1}}</td>
+    <td>{{firstHot1_price}}</td>
+  </tr>
+  <tr>
+    <td>{{city2}}</td>
+    <td>{{firstHot2}}</td>
+    <td>{{firstHot2_price}}</td>
+  </tr>
+</table>
+
+<hr>
+
+
+ {% endblock %}
