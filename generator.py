@@ -104,6 +104,7 @@ def generate(item, dataList):
     for url in data['images']:
       images_string += """<img src="{}">""".format(url) + "\n"
 
+    
     # Using the ITEM_FORMAT template, we fill in the rest of the information
     # including the location, rating, price, and images
     middle += ITEM_FORMAT.format(location=data['location'], 
