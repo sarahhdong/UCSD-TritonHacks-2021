@@ -12,7 +12,7 @@ headers = {
 """
 String, String => ([ratings], [costs])
 """
-def scrape_for(query, location, ):
+def scrape_for(query, location):
   # Builds the URL for what to scrape
   url = "https://www.yelp.com/search?"
   params = {"find_desc": query, "find_loc": location, "ns": 1}
@@ -36,11 +36,9 @@ def scrape_for(query, location, ):
   PART 4
   """
   # Get all star ratings
-  stars = scraper.find_all("div","i-stars__09f24__1T6rz i-stars--regular-4-half__09f24__1YrPo border-color--default__09f24__1eOdn overflow--hidden__09f24__3z7CX") # <- TODO Add the div class here
+  stars = scraper.find_all("div",class_="i-stars__09f24__1T6rz i-stars--regular-4-half__09f24__1YrPo border-color--default__09f24__1eOdn overflow--hidden__09f24__3z7CX")
 
-  """
- change the methods below
-  """
+
   # Get all images, store only source attributes
   images = scraper.find_all(class_="css-xlzvdl")[:10]
   image_sources = [img["src"] for img in images]

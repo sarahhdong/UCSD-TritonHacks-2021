@@ -81,12 +81,15 @@ def hotel():
     if request.method == 'POST':
         city1 = request.form['city1']
         city2 = request.form['city2']
+
+        nscity1 = re.sub(' ', '-', city1)
+        nscity2 = re.sub(' ', '-', city2)
         if not (city1 and city2):
             flash('Required field needed')
         else:
             try:
-                hotels1, prices1 = getHotel(city1)
-                hotels2, prices2 = getHotel(city2)
+                hotels1, prices1 = getHotel(nscity1)
+                hotels2, prices2 = getHotel(nscity2)
                 place1_avg_price = avg_price(prices1)
                 place2_avg_price = avg_price(prices2)
 

@@ -6,9 +6,9 @@ PART 5 - Average Price
 [list of string prices (e.g. [$, $$]) ] => float
 """
 def avg_price(prices):
-    
+
   print("Prices input looks like the following", prices)
-  # Replace the below code to calculate the average prices! 
+  # Replace the below code to calculate the average prices!
   # Keep in mind the type of our input (list of string)
   sum = 0
   for i in range(len(prices)):
@@ -30,9 +30,9 @@ def avg_rating(ratings):
   sum=0
   for i in range(len(ratings)):
     sum+=ratings[i]
-    
+
   average = sum / len(ratings) # <- TODO Replace this line
-  average = round(average,2)
+  #average = round(average,2)
   return average
 
 
@@ -46,7 +46,7 @@ def calculate_moons(score, multiplier):
   MOON_EMOJIS = ["&#x1F311","&#x1F318", "&#x1F317", "&#x1F316", "&#x1F315"]
   score = math.floor(float(score) * multiplier + 0.25) / multiplier
   score_copy = score
-  
+
   display_string = ""
   for i in range (5):
     if(score> 1):
