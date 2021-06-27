@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
+import re
 
 # Entrypoint to your webscraping starter kit
 import os         # Used to open html page after scraping
@@ -111,6 +112,29 @@ def hotel():
 
             #return render_template('hotel.html')
     return render_template('hotel.html')
+
+@app.route('/weather', methods=('GET', 'POST'))
+def weather():
+    if request.method == 'POST':
+        city1 = request.form['city1']
+        city2 = request.form['city2']
+
+        ns_place1 = re.sub(' ', '-', city1);
+        ns_place2 = re.sub(' ', '-', city2);
+        if not (city1 and city2):
+            flash('Required field needed')
+        else:
+            try:
+                (temp1, symbol1) = getweather(city1)
+                (temp2, symbol2) = getweather(city2)
+
+                warmer = city2 if temp2 > temp1 else city1
+                givedeg = "{} is currently {}, while {} is {}"
+                print(givedeg.format(city1,temp1,city2,temp2))
+                return (warmer + "is warmer")
+
+            except Exception as e:
+                flash('Bad input, please re-enter')
 
 @app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp>')
 def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp):
