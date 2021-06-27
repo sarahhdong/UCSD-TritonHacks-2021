@@ -57,7 +57,6 @@ def foodcompare():
             #return 'Cheaper place is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
             #return 'star1 is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
 
-
             if place1_avg_price > place2_avg_price:
                 pricecmp = 'The cheaper place is: ' + loc2
             elif place1_avg_price == place2_avg_price:
@@ -74,13 +73,10 @@ def foodcompare():
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b2eedee103746b01d966a342781e740b05d965fd
     return render_template('foodcompare.html')
 
-@app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
+ @app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
 def result(type, loc1, loc2, place1_avg_price, place2_avg_price, place1_avg_rating, place2_avg_rating, pricecmp, ratecmp):
     return render_template('result.html', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp)
 
