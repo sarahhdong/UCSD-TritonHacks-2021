@@ -46,7 +46,7 @@ def compare():
 
             except Exception as e:
                 flash('Bad input, please re-enter.')
-                return render_template('compare.html')
+                return render_template('foodcompare.html')
                 #return("Input value is not corret. Please re-enter")
 
             # Determine the cheaper and higher rated places
@@ -74,7 +74,7 @@ def compare():
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
-    return render_template('compare.html')
+    return render_template('foodcompare.html')
 
 @app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
 def result(type, loc1, loc2, place1_avg_price, place2_avg_price, place1_avg_rating, place2_avg_rating, pricecmp, ratecmp):
