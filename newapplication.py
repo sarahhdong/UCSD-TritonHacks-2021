@@ -128,14 +128,18 @@ def weather():
                 (temp1, symbol1) = getweather(city1)
                 (temp2, symbol2) = getweather(city2)
 
+                Deg1 = temp1[0]
+                Deg2 = temp2[0]
                 warmer = city2 if temp2 > temp1 else city1
                 givedeg = "{} is currently {}, while {} is {}"
-                print(givedeg.format(city1,temp1,city2,temp2))
-                return (warmer + "is warmer")
+                print(givedeg.format(city1,Deg1,city2,Deg2))
+                return render_template('***compare.html')
 
             except Exception as e:
-                flash('Bad input, please re-enter')
-                
+                flash('Bad input, please re-enter') 
+        return render_template('***compare.html')
+
+
 @app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp1>')
 def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp1):
     return render_template('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
