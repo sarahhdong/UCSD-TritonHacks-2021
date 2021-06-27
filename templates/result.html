@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{% block title %} Welcome to Location Comparison APP {% endblock %}</h1>
+<h2> Food Type is: {{ type }} </h2>
+<hr>
+<br>
+<center> <h3>  {{ pricecmp }} </h3>
+<h3> {{ ratecmp }} </h3></center>
+
+<hr>
+
+ <div style="width: 100%;">
+        <div style="width: 50%; height: 100px; float: left; background: white; text-align: center; border:1px solid black;" >
+          <h3>{{loc1}}</h3>
+      
+      Average Price: {{place1_avg_price}}<br>
+      Average Rating: {{place1_avg_rating}}
+      
+        </div>
+        <div style="margin-left: 50%; height: 100px;  background: white; text-align: center; border:1px solid black;">
+          <h3>{{loc2}}</h3>
+      
+      Average Price: {{place2_avg_price}}<br>
+      Average Rating: {{place2_avg_rating}}
+        </div>
+  </div>
+
+<hr>
+
+
+ {% endblock %}
