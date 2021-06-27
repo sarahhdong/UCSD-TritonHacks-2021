@@ -73,6 +73,10 @@ def getweather(location):
   return temp
 
 def getHotel(city):
+
+  #if (' ' in city) == True:
+  #    city = city.replace(' ','-')
+
   # Builds the URL for what to scrape
   url = "https://www.booking.com/city/us/"
   url += (city.lower() + '.html')

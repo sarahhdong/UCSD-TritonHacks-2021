@@ -71,7 +71,7 @@ def foodcompare():
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
->>>>>>> 5c1f7add5d826f52cb0f959360cf7b3c798100b5    
+>>>>>>> 5c1f7add5d826f52cb0f959360cf7b3c798100b5
 
 =======
 >>>>>>> b2eedee103746b01d966a342781e740b05d965fd
