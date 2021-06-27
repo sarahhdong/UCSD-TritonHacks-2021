@@ -21,8 +21,8 @@ def index():
 def introduction():
     return render_template('introduction.html')
 
-@app.route('/compare', methods=('GET', 'POST'))
-def compare():
+@app.route('/foodcompare', methods=('GET', 'POST'))
+def foodcompare():
     if request.method == 'POST':
         type = request.form['type']
         loc1 = request.form['loc1']
@@ -46,7 +46,7 @@ def compare():
 
             except Exception as e:
                 flash('Bad input, please re-enter.')
-                return render_template('compare.html')
+                return render_template('foodcompare.html')
                 #return("Input value is not corret. Please re-enter")
 
             # Determine the cheaper and higher rated places
@@ -54,6 +54,7 @@ def compare():
             #higher_rating = loc2 if place2_avg_rating > place1_avg_rating else loc1
 =======
 
+<<<<<<< HEAD
             if place1_avg_price > place2_avg_price:
                 pricecmp = 'The cheaper place is: ' + loc2
             elif place1_avg_price == place2_avg_price:
@@ -72,15 +73,32 @@ def compare():
 
 >>>>>>> 5c1f7add5d826f52cb0f959360cf7b3c798100b5    
 
+=======
+>>>>>>> b2eedee103746b01d966a342781e740b05d965fd
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, cheaper=cheaper, higher=higher_rating))
             #return 'Cheaper place is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
             #return 'star1 is: %s' % cheaper + '   Higher rating is: %s' % higher_rating
 
-<<<<<<< HEAD
-=======
-    return render_template('compare.html')
 
->>>>>>> 1ddcd07fd68e965665247190965bdd0c8f2f45aa
+            if place1_avg_price > place2_avg_price:
+                pricecmp = 'The cheaper place is: ' + loc2
+            elif place1_avg_price == place2_avg_price:
+                pricecmp = 'The average price for the two locations are the same'
+            else:
+                pricecmp = 'The cheaper place is: ' + loc1
+
+            if place2_avg_rating > place1_avg_rating:
+                ratecmp = 'The higher rate place is: ' + loc2
+            elif place1_avg_rating == place2_avg_rating:
+                ratecmp = 'The avarage rating for the two locations are the same'
+            else:
+                ratecmp = 'The higher rate place is: ' + loc1
+
+            return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
+
+
+    return render_template('foodcompare.html')
+
 @app.route('/result/<type>/<loc1>/<loc2>/<place1_avg_price>/<place2_avg_price>/<place1_avg_rating>/<place2_avg_rating>/ <pricecmp>/<ratecmp>')
 def result(type, loc1, loc2, place1_avg_price, place2_avg_price, place1_avg_rating, place2_avg_rating, pricecmp, ratecmp):
     return render_template('result.html', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp)
@@ -106,4 +124,25 @@ def hotel():
             except Exception as e:
                 flash('Bad input, please re-enter')
 
+@app.route('/weather', methods=('GET', 'POST'))
+def weather():
+    if request.method == 'POST':
+        city1 = request.form['city1']
+        city2 = request.form['city2']
+        place1 = input()
+        ns_place1 = re.sub(' ', '-', city1);
+        ns_place2 = re.sub(' ', '-', city2);
+        if not (city1 and city2):
+            flash('Required field needed')
+        else:
+            try:
+                (temp1, symbol1) = getweather(city1)
+                (temp2, symbol2) = getweather(city2)
 
+                warmer = place2 if temp2 > temp1 else place1
+                givedeg = "{} is currently {}, while {} is {}"
+                print(givedeg.format(place1,temp1,palce2,temp2))
+                return (warmer + "is warmer")
+
+            except Exception as e:
+                flash('Bad input, please re-enter')
