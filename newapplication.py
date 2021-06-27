@@ -112,7 +112,6 @@ def hotel():
             return render_template('hotel.html')
     return render_template('hotel.html')
 
-<<<<<<< HEAD
 
 @app.route('/weather', methods=('GET', 'POST'))
 def weather():
@@ -136,10 +135,9 @@ def weather():
 
             except Exception as e:
                 flash('Bad input, please re-enter')
-=======
+                
 @app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp1>')
 def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp1):
     return render_template('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
 
 
->>>>>>> f3d077200421a80ef18b826ad7a5667d5305b52a
