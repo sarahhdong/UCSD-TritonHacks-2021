@@ -88,22 +88,22 @@ def hotel():
         if not (city1 and city2):
             flash('Required field needed')
         else:
+            try:
+                hotels1, prices1 = getHotel(nscity1)
+                hotels2, prices2 = getHotel(nscity2)
+                place1_avg_price = avg_price(prices1)
+                place2_avg_price = avg_price(prices2)
 
-            hotels1, prices1 = getHotel(nscity1)
-            hotels2, prices2 = getHotel(nscity2)
-            place1_avg_price = avg_price(prices1)
-            place2_avg_price = avg_price(prices2)
+                firstHot1 = hotels1[0]
+                firstHot2 = hotels2[0]
+                firstHot1_price = prices1[0]
+                firstHot2_price = prices2[0]
 
-            firstHot1 = hotels1[0]
-            firstHot2 = hotels2[0]
-            firstHot1_price = prices1[0]
-            firstHot2_price = prices2[0]
+                print('successful')
 
-            print('successful')
-
-            #except Exception as e:
-             #   flash('Bad input, please re-enter')
-              #  return render_template('hotel.html')
+            except Exception as e:
+                flash('Bad input, please re-enter')
+                return render_template('hotel.html')
 
             cheaper = city2 if place1_avg_price > place2_avg_price else city1
             pricecmp = (cheaper + " has cheaper hotels on average")
