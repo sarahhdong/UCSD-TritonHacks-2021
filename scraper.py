@@ -96,9 +96,9 @@ def getHotel(city):
     prices[i] = prices[i].string
 
   # Get all images, store only source attributes
-  #images = scraper.find_all(class_="sr__card_photo")[:10]
-  #image_sources = [img["src"] for img in images]
+  images = scraper.find_all(class_="sr__card_photo")[:10]
+  image_sources = [img["src"] for img in images]
 
-  return hotels,prices
+  return hotels,prices, image_sources
 
 
