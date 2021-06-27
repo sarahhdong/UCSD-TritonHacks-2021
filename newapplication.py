@@ -7,7 +7,7 @@ import webbrowser
 import sys        # Used to end program if error occurs
 
 from convert import avg_price, avg_rating
-from scraper import scrape_for
+from scraper import scrape_for, getHotel
 from scraper import getweather
 from generator import generate, homePage
 
@@ -81,35 +81,30 @@ def hotel():
     if request.method == 'POST':
         city1 = request.form['city1']
         city2 = request.form['city2']
-
         if not (city1 and city2):
             flash('Required field needed')
         else:
             try:
-                (hotels1, prices1) = getHotel(city1)
-                (hotels2, prices2) = getHotel(city2)
-
+                hotels1, prices1 = getHotel(city1)
+                hotels2, prices2 = getHotel(city2)
                 place1_avg_price = avg_price(prices1)
                 place2_avg_price = avg_price(prices2)
 
                 firstHot1 = hotels1[0]
                 firstHot2 = hotels2[0]
-
                 firstHot1_price = prices1[0]
                 firstHot2_price = prices2[0]
-
-                cheaper = city2 if city1_avg > city2_avg else city1
-                pricecmp = (cheaper + " has cheaper hotels on average")
-
-                return redirect('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
-
-
 
             except Exception as e:
                 flash('Bad input, please re-enter')
                 return render_template('hotel.html')
 
-            return render_template('hotel.html')
+            cheaper = city2 if place1_avg_price > place2_avg_price else city1
+            pricecmp = (cheaper + " has cheaper hotels on average")
+
+            return redirect(url_for('hotelresult', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp))
+
+           # return render_template('hotel.html')
     return render_template('hotel.html')
 
 
@@ -118,7 +113,7 @@ def weather():
     if request.method == 'POST':
         city1 = request.form['city1']
         city2 = request.form['city2']
-        
+
         ns_place1 = re.sub(' ', '-', city1);
         ns_place2 = re.sub(' ', '-', city2);
         if not (city1 and city2):
@@ -135,9 +130,17 @@ def weather():
 
             except Exception as e:
                 flash('Bad input, please re-enter')
+<<<<<<< HEAD
                 
 @app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp1>')
 def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp1):
+=======
+        return render_template('***compare.html')
+
+
+@app.route('/hotelresult/<city1>/<city2>/<firstHot1>/<firstHot2>/<firstHot1_price>/<firstHot2_price>/ <pricecmp>')
+def hotelresult(city1, city2, firstHot1, firstHot2, firstHot1_price, firstHot2_price, pricecmp):
+>>>>>>> b4e24dc8d43911877c9225bb25a065251ffb881d
     return render_template('hotelresult.html', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp)
 
 
