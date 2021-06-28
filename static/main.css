@@ -1,0 +1,100 @@
+h1 {
+    border: 2px #eee solid;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+}
+
+* {
+    font-family: SeoulHangang;
+    margin: 10;
+    padding: 0;
+  }
+  
+  #title{
+    font-size: 2em;
+    padding: 1vw;
+    text-align: center;
+  }
+  #board{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .slide{
+    width: calc(50% - 6px - 2vw);
+    padding: 1vw;
+    text-align: center;
+    justify-content: center;
+  }
+  .slide div{
+    margin-bottom: 3vh;
+  }
+  h2{
+    margin-bottom: 1vh;
+    text-align: center;
+  }
+  .imageCollage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .imageCollage img{
+    max-width:20%;
+    max-height: 15vh;
+    padding: 0.5vw;
+  }
+  body{
+    background-color: #A3D2E8;
+  }
+.container { 
+  height: 200px;
+  width: 270px;
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  justify-content: center;
+  
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.button {
+  background-color: white;
+  font-family: SeoulHangang;
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 5px 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  opacity: 0.6;
+}
+.button:hover {
+opacity: 1;
+}
+h1{
+  font-size: 100px;
+  text-align: center;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+div.parent{
+display: flex;
+justify-content: space-around;
+}
