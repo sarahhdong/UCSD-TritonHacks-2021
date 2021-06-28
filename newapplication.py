@@ -28,6 +28,8 @@ def foodcompare():
         type = request.form['type']
         loc1 = request.form['loc1']
         loc2 = request.form['loc2']
+        ploc1 = loc1.title()
+        ploc2 = loc2.title()
 
         # Make the scrapping requests (this may take a few seconds)
         # scrape_for is a function imported from scraper.py
@@ -55,18 +57,18 @@ def foodcompare():
             #higher_rating = loc2 if place2_avg_rating > place1_avg_rating else loc1
 
             if place1_avg_price > place2_avg_price:
-                pricecmp = 'The cheaper place is ' + loc2
+                pricecmp = 'The cheaper place is ' + ploc2
             elif place1_avg_price == place2_avg_price:
                 pricecmp = 'The average price for the two locations are the same'
             else:
-                pricecmp = 'The cheaper place is ' + loc1
+                pricecmp = 'The cheaper place is ' + ploc1
 
             if place2_avg_rating > place1_avg_rating:
-                ratecmp = 'The higher rated place is ' + loc2
+                ratecmp = 'The higher rated place is ' + ploc2
             elif place1_avg_rating == place2_avg_rating:
                 ratecmp = 'The average rating for the two locations are the same'
             else:
-                ratecmp = 'The higher rated place is ' + loc1
+                ratecmp = 'The higher rated place is ' + ploc1
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
@@ -106,7 +108,7 @@ def hotel():
                 return render_template('hotel.html')
 
             cheaper = city2 if place1_avg_price > place2_avg_price else city1
-            pricecmp = (cheaper + " has cheaper hotels on average")
+            pricecmp = (cheaper.title() + " has cheaper hotels on average")
 
             return redirect(url_for('hotelresult', city1=city1, city2=city2, firstHot1=firstHot1, firstHot2=firstHot2, firstHot1_price=firstHot1_price, firstHot2_price=firstHot2_price, pricecmp=pricecmp))
 
