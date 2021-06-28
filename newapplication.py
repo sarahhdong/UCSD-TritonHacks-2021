@@ -62,11 +62,11 @@ def foodcompare():
                 pricecmp = 'The cheaper place is ' + loc1
 
             if place2_avg_rating > place1_avg_rating:
-                ratecmp = 'The higher rated place is: ' + loc2
+                ratecmp = 'The higher rated place is ' + loc2
             elif place1_avg_rating == place2_avg_rating:
                 ratecmp = 'The average rating for the two locations are the same'
             else:
-                ratecmp = 'The higher rated place is: ' + loc1
+                ratecmp = 'The higher rated place is ' + loc1
 
             return redirect(url_for('result', type=type, loc1=loc1, loc2=loc2, place1_avg_price=place1_avg_price, place2_avg_price=place2_avg_price, place1_avg_rating=place1_avg_rating, place2_avg_rating=place2_avg_rating, pricecmp=pricecmp, ratecmp=ratecmp))
 
